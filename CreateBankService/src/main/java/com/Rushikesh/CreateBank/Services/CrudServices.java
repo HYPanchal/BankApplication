@@ -1,7 +1,7 @@
 package com.Rushikesh.CreateBank.Services;
 
 import com.Rushikesh.CreateBank.Entity.Bank;
-import com.Rushikesh.CreateBank.ExceptionHandler.ResourcerNotFoundException;
+import com.Rushikesh.CreateBank.ExceptionHandler.ResourceNotFoundException;
 import com.Rushikesh.CreateBank.Repository.BankRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class CrudServices{
 
     public Object getBankById(int id) {
         return repo.findById(id)
-                .orElseThrow(() -> new ResourcerNotFoundException("The Bank with id : " + id + " Not Found"));
+                .orElseThrow(() -> new ResourceNotFoundException("The Bank with id : " + id + " Not Found"));
     }
 
     public List<Bank> getAllBank(){
@@ -41,7 +41,7 @@ public class CrudServices{
             repo.save(tempbank);
             return tempbank;
         } else {
-            throw new ResourcerNotFoundException("The Bank with id : "+bank.getId()+" Not Found");
+            throw new ResourceNotFoundException("The Bank with id : "+bank.getId()+" Not Found");
         }
     }
 
@@ -53,7 +53,7 @@ public class CrudServices{
             return tempbank;
         }
         else {
-            throw new ResourcerNotFoundException("The Bank with id : "+bank.getId()+" Not Found");
+            throw new ResourceNotFoundException("The Bank with id : "+bank.getId()+" Not Found");
         }
     }
 
